@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="Generator" content="Sublime Text3">
+    <meta name="Author" content="深山一枯柴">
+    <meta name="website" content="http://www.lihui-v.top">
+    <meta name="Description" content="马不停蹄的🐌!">
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+	#box{
+		border: 1px solid red;
+		height: 600px;
+		width: 1000px;
+		margin: 0 auto;
+		position: relative;
+	}
+	#box ul{
+		    list-style-type: none;
+		    height: 600px;
+		    width: 1500px;
+    		border: 1px solid red;
+	}
+	#box ul li{
+		       float: right;       
+	}
+	#bullet{
+		border: 1px solid red;
+		height: 40px;
+		width: 1000px;
+		margin: 0 auto;	
+		/*line-height: 40px;*/	    
+	}
+	#text{
+          height: 34px;
+          width: 200px;
+	}
+</style>
+</head>
+<body>
+<div id="box">
+     <ul>
+     </ul>       
+</div>
+<div id="bullet">
+    <input type="text" id="text">
+    <button id="btn">弹幕</button>
+</div>
+<script type="text/javascript">
+	function $(id){return document.getElementById(id);}
+	var box = $("box");
+	var ul = box.children;
+	var text = $("text");
+	var btn = $("btn");
+	var boxheight = box.offsetHeight;
+	console.log(boxheight);
+	btn.onclick = function(){
+	var tex = text.value;
+	console.log(tex);
+	
+	for (var i = 0; i < tex.length; i++) {
+		// console.log(tex[i]);
+		var lis = document.createElement("li");
+		lis.innerHTML= tex;		
+	};
+	ul[0].appendChild(lis);
+	// console.log(tex[i]);
+	var step = 15;
+	var timer = setInterval(function(){
+		for (var i = 0; i < lis.length; i++) {
+			lis.style.left = boxheight - step +"px";
+		};
+	},30)
+	if (boxheight - step < 15) {
+		clearInterval(timer);
+	};
+}
+</script>
+</body>
+</html>
